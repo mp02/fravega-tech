@@ -57,6 +57,14 @@ paths:
       description: Devuelve todos los productos, con posibilidad de aplicar filtros
       operationId: get-products
       parameters:
+      - description: 'Número de página (por defecto: 1)'
+        in: query
+        name: page
+        type: integer
+      - description: 'Número de elementos por página (por defecto: 10)'
+        in: query
+        name: limit
+        type: integer
       - collectionFormat: csv
         description: Filtros por categorías
         in: query

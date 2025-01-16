@@ -25,8 +25,8 @@ func (uc *ProductUseCase) CreateProduct(product *domain.Product) (domain.Product
 }
 
 // GetAllProducts devuelve todos los productos
-func (uc *ProductUseCase) GetAllActiveProducts() ([]domain.Product, error) {
-	return uc.Repo.GetAll()
+func (uc *ProductUseCase) GetAllActiveProducts(page, limit int) ([]domain.Product, error) {
+	return uc.Repo.GetAll(page, limit)
 }
 
 // GetAllProducts devuelve todos los productos
@@ -38,6 +38,6 @@ func (uc *ProductUseCase) UpdateProductByID(id string, product *domain.UpdatePro
 	return uc.Repo.Update(id, product)
 }
 
-func (u *ProductUseCase) GetProductsWithFilters(filters domain.ProductFilters) ([]domain.Product, error) {
-	return u.Repo.GetProductsByFilters(filters)
+func (u *ProductUseCase) GetProductsWithFilters(filters domain.ProductFilters, page, limit int) ([]domain.Product, error) {
+	return u.Repo.GetProductsByFilters(filters, page, limit)
 }

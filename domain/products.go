@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"errors"
 	"time"
 )
 
@@ -26,33 +25,11 @@ type UpdateProduct struct {
 	IsDeleted   *bool     `json:"is_deleted,omitempty"`
 }
 
-type ProductFilters struct {
-	Name       *string   `form:"name"`
-	MinPrice   *float64  `form:"min_price"`
-	MaxPrice   *float64  `form:"max_price"`
-	Categories *[]string `form:"categories"`
-	IsDeleted  *bool     `form:"is_deleted"`
-}
-
 // ProductRepository define las operaciones del repositorio
 type ProductRepository interface {
 	Create(product *Product) (Product, error)
-	GetAll() ([]Product, error)
+	GetAll(page, limit int) ([]Product, error)
 	Delete(id string) (Product, error)
 	Update(id string, updateProduct *UpdateProduct) (Product, error)
-	GetProductsByFilters(filters ProductFilters) ([]Product, error)
-}
-
-func (f *ProductFilters) Validate() error {
-	if *f.MinPrice > *f.MaxPrice && *f.MaxPrice > 0 {
-		return errors.New("min_price cannot be greater than max_price")
-	}
-	return nil
-}
-
-func (f *ProductFilters) AreFiltersEmpty() bool {
-	if f.MinPrice == nil && f.MaxPrice == nil && f.Categories == nil && f.IsDeleted == nil {
-		return true
-	}
-	return false
+	GetProductsByFilters(filters ProductFilters, page int, limit int) ([]Product, error)
 }

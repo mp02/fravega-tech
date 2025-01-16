@@ -32,10 +32,11 @@ func (r *MongoProductRepository) Create(product *domain.Product) (domain.Product
 	return *product, nil
 }
 
-func (r *MongoProductRepository) GetAll() ([]domain.Product, error) {
+func (r *MongoProductRepository) GetAll(page, limit int) ([]domain.Product, error) {
 	filter := bson.M{"is_deleted": false}
+	options := options.Find().SetSkip(int64(page)).SetLimit(int64(limit))
 
-	cursor, err := r.Collection.Find(context.Background(), filter)
+	cursor, err := r.Collection.Find(context.Background(), filter, options)
 	if err != nil {
 		fmt.Println("error en el find", err)
 		return nil, err
@@ -124,7 +125,7 @@ func (r *MongoProductRepository) Update(productID string, updates *domain.Update
 	return updatedProduct, nil
 }
 
-func (r *MongoProductRepository) GetProductsByFilters(filters domain.ProductFilters) ([]domain.Product, error) {
+func (r *MongoProductRepository) GetProductsByFilters(filters domain.ProductFilters, page, limit int) ([]domain.Product, error) {
 	// Construir el filtro MongoDB basado en los filtros proporcionados
 	filter := bson.M{}
 	if filters.Name != nil {
@@ -146,8 +147,9 @@ func (r *MongoProductRepository) GetProductsByFilters(filters domain.ProductFilt
 		filter["is_deleted"] = bson.M{"$eq": filters.IsDeleted}
 	}
 
-	// Consultar la base de datos con los filtros
-	cursor, err := r.Collection.Find(context.Background(), filter)
+	options := options.Find().SetSkip(int64(page)).SetLimit(int64(limit))
+
+	cursor, err := r.Collection.Find(context.Background(), filter, options)
 	if err != nil {
 		fmt.Println("find", err)
 		return nil, err

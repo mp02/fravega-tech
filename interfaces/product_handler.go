@@ -3,6 +3,7 @@ package interfaces
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/mp02/fravega-tech/domain"
@@ -51,6 +52,8 @@ func (h *ProductHandler) CreateProduct(c *gin.Context) {
 // @Tags productos
 // @ID get-products
 // @Produce json
+// @Param page query int false "Número de página (por defecto: 1)"
+// @Param limit query int false "Número de elementos por página (por defecto: 10)"
 // @Param categories query []string false "Filtros por categorías"
 // @Param min_price query float64 false "Filtro por precio mínimo"
 // @Param max_price query float64 false "Filtro por precio máximo"
@@ -60,12 +63,29 @@ func (h *ProductHandler) CreateProduct(c *gin.Context) {
 // @Router /products [get]
 func (h *ProductHandler) GetProducts(c *gin.Context) {
 	var filters domain.ProductFilters
+	var page, limit int
+
+	pageParam := c.DefaultQuery("page", "0")
+	limitParam := c.DefaultQuery("limit", "10")
+
+	if p, err := strconv.Atoi(pageParam); err == nil && p > 0 {
+		page = p
+	} else {
+		page = 0 // Valor por default, (skip mongo)
+	}
+
+	if l, err := strconv.Atoi(limitParam); err == nil && l > 0 && l <= 100 {
+		limit = l
+	} else {
+		limit = 10 // Valor por default
+	}
+
 	if err := c.ShouldBindQuery(&filters); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid filters"})
 		return
 	}
 	if filters.AreFiltersEmpty() {
-		products, err := h.UseCase.GetAllActiveProducts()
+		products, err := h.UseCase.GetAllActiveProducts(page, limit)
 		if err != nil {
 			fmt.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error fetching all active products"})
@@ -75,7 +95,7 @@ func (h *ProductHandler) GetProducts(c *gin.Context) {
 		return
 	}
 
-	products, err := h.UseCase.GetProductsWithFilters(filters)
+	products, err := h.UseCase.GetProductsWithFilters(filters, page, limit)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error fetching filtered products"})
 		return

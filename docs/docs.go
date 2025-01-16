@@ -32,6 +32,18 @@ const docTemplate = `{
                 "operationId": "get-products",
                 "parameters": [
                     {
+                        "type": "integer",
+                        "description": "Número de página (por defecto: 1)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Número de elementos por página (por defecto: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
                         "type": "array",
                         "items": {
                             "type": "string"

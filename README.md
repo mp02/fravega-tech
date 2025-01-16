@@ -19,6 +19,8 @@ Esta API permite gestionar productos en una tienda en línea. Ofrece funcionalid
 
 ### Productos
 - **GET /products**: Obtiene todos los productos activos o filtra según los parámetros de consulta.
+    Ejemplo localhost:8080/v1/products?min_price=10&max_price=15&categories=posters&categories=deadpool
+    categories es un array donde las condiciones se intersectan (&)
 - **GET /products/{id}**: Obtiene un producto por su identificador.
 - **POST /products**: Crea un nuevo producto.
 - **PATCH /products/{id}**: Actualiza campos específicos de un producto.
