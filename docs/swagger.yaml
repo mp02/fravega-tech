@@ -1,0 +1,175 @@
+basePath: /v1
+definitions:
+  domain.Product:
+    properties:
+      categories:
+        items:
+          type: string
+        type: array
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      images_url:
+        items:
+          type: string
+        type: array
+      is_deleted:
+        type: boolean
+      name:
+        type: string
+      price:
+        type: number
+      updated_at:
+        type: string
+    type: object
+  domain.UpdateProduct:
+    properties:
+      categories:
+        items:
+          type: string
+        type: array
+      description:
+        type: string
+      is_deleted:
+        type: boolean
+      name:
+        type: string
+      price:
+        type: number
+      updated_at:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: o.gema.pg@gmail.com
+    name: Martin Pruyas
+    url: https://www.linkedin.com/in/martin-pruyas/
+  description: Challange Fravega Tech
+  title: API ABM Catalog
+  version: "1.0"
+paths:
+  /products:
+    get:
+      description: Devuelve todos los productos, con posibilidad de aplicar filtros
+      operationId: get-products
+      parameters:
+      - collectionFormat: csv
+        description: Filtros por categorías
+        in: query
+        items:
+          type: string
+        name: categories
+        type: array
+      - description: Filtro por precio mínimo
+        in: query
+        name: min_price
+        type: number
+      - description: Filtro por precio máximo
+        in: query
+        name: max_price
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Product'
+            type: array
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Obtiene una lista de productos
+      tags:
+      - productos
+    post:
+      consumes:
+      - application/json
+      description: Permite crear un nuevo producto con la información proporcionada
+      operationId: create-product
+      parameters:
+      - description: Producto a crear
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "400":
+          description: Bad Request
+          schema: {}
+      summary: Crea un nuevo producto
+      tags:
+      - productos
+  /products/{id}:
+    delete:
+      description: Marca como eliminado un producto específico
+      operationId: delete-product
+      parameters:
+      - description: Producto ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Elimina un producto por su ID
+      tags:
+      - productos
+    patch:
+      consumes:
+      - application/json
+      description: Permite actualizar la información de un producto específico
+      operationId: update-product
+      parameters:
+      - description: Producto ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Producto actualizado
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UpdateProduct'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "400":
+          description: Bad Request
+          schema: {}
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: Actualiza un producto por su ID
+      tags:
+      - productos
+swagger: "2.0"

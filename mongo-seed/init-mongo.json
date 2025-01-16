@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Action Figure of Green Lantern",
+    "description": "A highly detailed action figure of the Green Lantern, one of the most powerful heroes in the DC Universe.",
+    "price": 29.99,
+    "categories": ["comics", "action figures"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/green-lantern.jpg"]
+  },
+  {
+    "name": "The Flash Graphic Novel",
+    "description": "A hardcover graphic novel featuring The Flash and his battle against his arch-nemesis, Reverse-Flash.",
+    "price": 19.99,
+    "categories": ["comics", "graphic novels"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/flash-graphic-novel.jpg"]
+  },
+  {
+    "name": "Star Wars: The Force Awakens Poster",
+    "description": "A limited edition poster featuring characters from Star Wars: The Force Awakens.",
+    "price": 14.99,
+    "categories": ["posters", "star wars"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/star-wars-poster.jpg"]
+  },
+  {
+    "name": "Batman: The Killing Joke Hardcover",
+    "description": "One of the most iconic Batman graphic novels, The Killing Joke, exploring the relationship between Batman and the Joker.",
+    "price": 24.99,
+    "categories": ["comics", "graphic novels", "batman"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/batman-killing-joke.jpg"]
+  },
+  {
+    "name": "Iron Man Funko Pop!",
+    "description": "A Funko Pop! figure of Tony Stark in his iconic Iron Man suit, a must-have for collectors.",
+    "price": 11.99,
+    "categories": ["toys", "funko pop", "iron man"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/iron-man-funko-pop.jpg"]
+  },
+  {
+    "name": "The Avengers 4 Movie Poster",
+    "description": "A large movie poster of The Avengers 4, featuring all the key characters in action poses.",
+    "price": 19.99,
+    "categories": ["posters", "avengers"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/avengers-4-poster.jpg"]
+  },
+  {
+    "name": "Superman 'S' Logo T-shirt",
+    "description": "A comfortable t-shirt with Superman's iconic 'S' logo on the chest, perfect for fans of the Man of Steel.",
+    "price": 15.99,
+    "categories": ["clothing", "superman"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/superman-tshirt.jpg"]
+  },
+  {
+    "name": "Spider-Man Web Shooter",
+    "description": "A fun and interactive web shooter that lets you pretend to swing like Spider-Man. Includes a pair of web shooter gloves.",
+    "price": 19.99,
+    "categories": ["toys", "spider-man"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/spiderman-web-shooter.jpg"]
+  },
+  {
+    "name": "Captain America Shield Replica",
+    "description": "A high-quality replica of Captain America's shield, made from lightweight materials.",
+    "price": 99.99,
+    "categories": ["collectibles", "captain america"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/captain-america-shield.jpg"]
+  },
+  {
+    "name": "Deadpool 2 Movie Poster",
+    "description": "A funny and irreverent poster of Deadpool from his second movie, perfect for any fan of the Merc with a Mouth.",
+    "price": 14.99,
+    "categories": ["posters", "deadpool"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/deadpool-2-poster.jpg"]
+  },
+  {
+    "name": "Thor Hammer Replica",
+    "description": "A premium replica of Thor's enchanted hammer, Mjolnir, for fans of the Asgardian god of thunder.",
+    "price": 129.99,
+    "categories": ["collectibles", "thor"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/thor-hammer.jpg"]
+  },
+  {
+    "name": "Wonder Woman Lasso of Truth",
+    "description": "A high-quality replica of Wonder Woman's Lasso of Truth, perfect for any fan of the Amazonian princess.",
+    "price": 49.99,
+    "categories": ["collectibles", "wonder woman"],
+    "createdAt": "2025-01-15T00:00:00Z",
+    "updatedAt": "2025-01-15T00:00:00Z",
+    "is_deleted": false,
+    "images_url": ["https://example.com/images/wonder-woman-lasso.jpg"]
+  }
+]
